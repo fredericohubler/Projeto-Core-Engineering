@@ -1,6 +1,6 @@
 import java.sql.Connection;
 
-import java.sql.DriverManager;
+import java.sql.DriverManager;;
 
 import java.sql.SQLException;
 
@@ -45,7 +45,7 @@ public class Database {
 
         } catch (ClassNotFoundException e) {  //Driver não encontrado
 
-            System.out.println("O driver expecificado nao foi encontrado.");
+            System.out.println("O driver especificado nao foi encontrado.");
 
             return null;
 
