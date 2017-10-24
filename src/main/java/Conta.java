@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Conta {
-    private int numConta;
+    private int numeroConta;
     private double saldo, mensalidade;
     private String nome, diaMensalidade, agencia;
     private ArrayList<CartaoCredito> listaCartoes;
 
     public Conta(String agencia, int numConta, double saldo, double mensalidade, String nome, String diaMensalidade) {
         this.agencia = agencia;
-        this.numConta = numConta;
+        this.numeroConta = numConta;
         this.saldo = saldo;
         this.mensalidade = mensalidade;
         this.nome = nome;
@@ -17,7 +17,7 @@ public class Conta {
     }
 
     public String Resumo() {
-        return "    " + nome + "\nAgencia: " + agencia + "\nNumero da conta: " + numConta + "\nSaldo: " + saldo + "\nMensalidade: " + mensalidade + "\nDia da Mensalidade: " + diaMensalidade + "\nCartoes de credito: " + listaCartoes.size();
+        return "    " + nome + "\nAgencia: " + agencia + "\nNumero da conta: " + numeroConta + "\nSaldo: " + saldo + "\nMensalidade: " + mensalidade + "\nDia da Mensalidade: " + diaMensalidade + "\nCartoes de credito: " + listaCartoes.size();
     }
 
     public void adicionaCartaoCredito(int numeroCartao, String validade, String diaFatura, String bandeira, double saldo, double limite) {
