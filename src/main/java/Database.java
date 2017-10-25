@@ -1,15 +1,15 @@
-import java.sql.Connection;
+import java.sql.*;
+import java.util.ArrayList;
 
-import java.sql.DriverManager;;
-
-import java.sql.SQLException;
+;
 
 public class Database {
 
     public static String status = "Não conectou...";
+    private static Connection connection;
 
     public Database() {
-
+        this.connection=getConexaoMySQL();
     }
 
     public static java.sql.Connection getConexaoMySQL() {
@@ -86,5 +86,36 @@ public class Database {
 
         FecharConexao();
         return Database.getConexaoMySQL();
+    }
+
+    public static ArrayList<String> retornaNomeUsers(){
+        String sql = "SELECT User.Nome FROM User";
+        ArrayList<String> retorno= new ArrayList<>();
+        try{
+            PreparedStatement prep = connection.prepareStatement(sql);
+            ResultSet st = prep.executeQuery();
+            while (st.next()){
+                retorno.add(st.getString("Nome"));
+            }
+        }catch (SQLException u){
+            throw new RuntimeException(u);
+        }
+
+        return retorno;
+    }
+
+    public static ArrayList<Integer> retornaCpfUsers(){
+        String sql = "SELECT User.CPF FROM User";
+        ArrayList<Integer> retorno= new ArrayList<>();
+        try{
+            PreparedStatement prep = connection.prepareStatement(sql);
+            ResultSet st = prep.executeQuery();
+            while (st.next()){
+                retorno.add(st.getInt("CPF"));
+            }
+        }catch (SQLException u){
+            throw new RuntimeException(u);
+        }
+        return retorno;
     }
 }
