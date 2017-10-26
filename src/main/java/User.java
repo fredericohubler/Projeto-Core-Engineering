@@ -8,11 +8,11 @@ public class User {
 
 
 
-    private int cpf;
+    private String cpf;
     private Database db = new Database();
     private Connection connection;
 
-    public User(String nome, int cpf){
+    public User(String nome, String cpf){
         this.nome=nome;
         this.cpf=cpf;
         contas = new ArrayList<Conta>();
@@ -29,18 +29,18 @@ public class User {
         return nome;
     }
 
-    public int getCPF() { return cpf; }
+    public String getCPF() { return cpf; }
 
     public ArrayList<Conta> getContas() {
         return contas;
     }
 
-    public boolean insereBanco() {
+   /* public boolean insereBanco() {
         String insert="INSERT INTO User(Nome, CPF) VALUES (?, ?)";
         try{
             PreparedStatement prep = connection.prepareStatement(insert);
             prep.setString(1,getNome());
-            prep.setString(2,Integer.toString(getCPF()));
+            prep.setString(2,getCPF());
             prep.execute();
             prep.close();
             return true;
@@ -54,7 +54,7 @@ public class User {
         String insert="DELETE FROM User WHERE CPF = ?";
         try{
             PreparedStatement prep = connection.prepareStatement(insert);
-            prep.setString(1,Integer.toString(getCPF()));
+            prep.setString(1,getCPF());
             prep.execute();
             prep.close();
             return true;
@@ -62,7 +62,7 @@ public class User {
             System.out.println(u);
             throw new RuntimeException(u);
         }
-    }
+    }*/
 
 
 }
