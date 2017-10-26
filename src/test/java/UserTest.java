@@ -9,7 +9,7 @@ public class UserTest {
     @Test
     public void testaInsereBanco(){
         //when
-        User u = new User("Teste", "1234");//----------------------------------------------AQUI
+        User u = new User("Teste", "1234");
         boolean retorno= userDAO.insereBanco(u);
         userDAO.removeBanco(u);
         //then
@@ -19,7 +19,7 @@ public class UserTest {
     @Test
     public void testaRemoveBanco(){
         //when
-        User u = new User("Teste","1234");//----------------------------------------------AQUI
+        User u = new User("Teste","1234");
         boolean retorno = userDAO.removeBanco(u);
 
         //then
