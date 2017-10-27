@@ -22,16 +22,16 @@ public class DatabaseTest {
     @Test
     public void testaRecuperaBanco(){
         //given
-        String esperado1 = "Teste";
+        String esperado1 = "Teste1";
         String esperado2 = "Teste2";
-        String esperado3 = "1234";
-        String esperado4 = "4321";
+        String esperado3 = "11111111111";
+        String esperado4 = "22222222222";
 
         //when
-        User u = new User("Teste","1234");
-        User v = new User("Teste2","4321" );
-        userDAO.insereBanco(u);
-        userDAO.insereBanco(v);
+        User mockUser1 = new User("Teste1","11111111111");
+        User mockUser2 = new User("Teste2","22222222222" );
+        userDAO.insere(mockUser1);
+        userDAO.insere(mockUser2);
         String sql = "SELECT User.Nome FROM User";
 
         String retorno1,retorno2;
@@ -40,8 +40,8 @@ public class DatabaseTest {
         retorno2 = databaseDAO.retornaNomeUsers().get(1);
         retorno3 = databaseDAO.retornaCpfUsers().get(0);
         retorno4 = databaseDAO.retornaCpfUsers().get(1);
-        userDAO.removeBanco(u);
-        userDAO.removeBanco(v);
+        userDAO.remove(mockUser1);
+        userDAO.remove(mockUser2);
 
         //then
         assertEquals(esperado1,retorno1);

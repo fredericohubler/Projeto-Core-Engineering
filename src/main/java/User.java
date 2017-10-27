@@ -35,7 +35,7 @@ public class User {
         return contas;
     }
 
-   /* public boolean insereBanco() {
+   /* public boolean insere() {
         String insert="INSERT INTO User(Nome, CPF) VALUES (?, ?)";
         try{
             PreparedStatement prep = connection.prepareStatement(insert);
@@ -50,7 +50,7 @@ public class User {
         }
     }
 
-    public boolean removeBanco() {
+    public boolean remove() {
         String insert="DELETE FROM User WHERE CPF = ?";
         try{
             PreparedStatement prep = connection.prepareStatement(insert);

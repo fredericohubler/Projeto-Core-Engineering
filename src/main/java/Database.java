@@ -4,15 +4,12 @@ import java.util.ArrayList;
 public class Database {
 
     public static String status = "Não conectou...";
-    private static Connection connection;
+    private Connection connection;
 
     public Database() {
         this.connection=getConexaoMySQL();
     }
 
-    public static Connection getConnection(){
-        return connection;
-    }
 
     public static java.sql.Connection getConexaoMySQL() {
 

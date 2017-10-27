@@ -11,7 +11,7 @@ public class DatabaseDAO {
         String sql = "SELECT User.Nome FROM User";
         ArrayList<String> retorno= new ArrayList<>();
         try{
-            PreparedStatement prep = Database.getConnection().prepareStatement(sql);
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(sql);
             ResultSet st = prep.executeQuery();
             while (st.next()){
                 retorno.add(st.getString("Nome"));
@@ -27,7 +27,7 @@ public class DatabaseDAO {
         String sql = "SELECT User.CPF FROM User";
         ArrayList<String> retorno= new ArrayList<>();
         try{
-            PreparedStatement prep = Database.getConnection().prepareStatement(sql);
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(sql);
             ResultSet st = prep.executeQuery();
             while (st.next()){
                 retorno.add(st.getString("CPF"));

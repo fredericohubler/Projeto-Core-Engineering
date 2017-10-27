@@ -3,10 +3,10 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public boolean insereBanco(User user) {
+    public boolean insere(User user) {
         String insert="INSERT INTO User(Nome, CPF) VALUES (?, ?)";
         try{
-            PreparedStatement prep = Database.getConnection().prepareStatement(insert);
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
             prep.setString(1,user.getNome());
             prep.setString(2,user.getCPF());
             prep.execute();
@@ -18,10 +18,10 @@ public class UserDAO {
         }
     }
 
-    public boolean removeBanco(User user) {
+    public boolean remove(User user) {
         String insert="DELETE FROM User WHERE CPF = ?";
         try{
-            PreparedStatement prep = Database.getConnection().prepareStatement(insert);
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
             prep.setString(1,user.getCPF());
             prep.execute();
             prep.close();

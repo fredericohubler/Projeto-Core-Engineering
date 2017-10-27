@@ -9,9 +9,9 @@ public class UserTest {
     @Test
     public void testaInsereBanco(){
         //when
-        User u = new User("Teste", "1234");
-        boolean retorno= userDAO.insereBanco(u);
-        userDAO.removeBanco(u);
+        User u = new User("Teste", "11111111111");
+        boolean retorno= userDAO.insere(u);
+        userDAO.remove(u);
         //then
         assertTrue(retorno);
     }
@@ -19,8 +19,8 @@ public class UserTest {
     @Test
     public void testaRemoveBanco(){
         //when
-        User u = new User("Teste","1234");
-        boolean retorno = userDAO.removeBanco(u);
+        User u = new User("Teste","11111111111");
+        boolean retorno = userDAO.remove(u);
 
         //then
         assertTrue(retorno);
