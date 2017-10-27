@@ -6,10 +6,11 @@ import static org.junit.Assert.*;
 public class UserTest {
 
     private UserDAO userDAO = new UserDAO();
+
     @Test
     public void testaInsereBanco(){
         //when
-        User u = new User("Teste", "11111111111");
+        User u = new User("Teste", "11111111112");
         boolean retorno= userDAO.insere(u);
         userDAO.remove(u);
         //then
@@ -19,7 +20,7 @@ public class UserTest {
     @Test
     public void testaRemoveBanco(){
         //when
-        User u = new User("Teste","11111111111");
+        User u = new User("Teste","11111111112");
         boolean retorno = userDAO.remove(u);
 
         //then

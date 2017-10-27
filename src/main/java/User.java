@@ -19,10 +19,10 @@ public class User {
         this.connection = Database.getConexaoMySQL();
     }
 
-    public void adicionaConta(String agencia, int numConta, double saldo, double mensalidade, String nome, String diaMensalidade){
+    /*public void adicionaConta(String agencia, int numConta, double saldo, double mensalidade, String nome, String diaMensalidade){
         Conta nova = new Conta(agencia, numConta, saldo, mensalidade, nome, diaMensalidade);
         contas.add(nova);
-    }
+    }*/
 
 
     public String getNome() {

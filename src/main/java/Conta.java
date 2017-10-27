@@ -1,19 +1,48 @@
 import java.util.ArrayList;
 
 public class Conta {
-    private int numeroConta;
+
     private double saldo, mensalidade;
-    private String nome, diaMensalidade, agencia;
+    private String nome, diaMensalidade, agencia, userCPF, numeroConta;
     private ArrayList<CartaoCredito> listaCartoes;
 
-    public Conta(String agencia, int numConta, double saldo, double mensalidade, String nome, String diaMensalidade) {
+    public Conta(String agencia, String numConta, double saldo, double mensalidade, String nome, String diaMensalidade, String userCPF) {
         this.agencia = agencia;
         this.numeroConta = numConta;
         this.saldo = saldo;
         this.mensalidade = mensalidade;
         this.nome = nome;
         this.diaMensalidade = diaMensalidade;
+        this.userCPF=userCPF;
         listaCartoes = new ArrayList<CartaoCredito>();
+    }
+
+    public String getNumeroConta() {
+        return numeroConta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public double getMensalidade() {
+        return mensalidade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDiaMensalidade() {
+        return diaMensalidade;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public String getUserCPF() {
+        return userCPF;
     }
 
     public String Resumo() {

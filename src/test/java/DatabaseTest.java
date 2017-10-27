@@ -24,12 +24,12 @@ public class DatabaseTest {
         //given
         String esperado1 = "Teste1";
         String esperado2 = "Teste2";
-        String esperado3 = "11111111111";
-        String esperado4 = "22222222222";
+        String esperado3 = "11111111112";
+        String esperado4 = "22222222221";
 
         //when
-        User mockUser1 = new User("Teste1","11111111111");
-        User mockUser2 = new User("Teste2","22222222222" );
+        User mockUser1 = new User("Teste1","11111111112");
+        User mockUser2 = new User("Teste2","22222222221" );
         userDAO.insere(mockUser1);
         userDAO.insere(mockUser2);
         String sql = "SELECT User.Nome FROM User";
@@ -42,6 +42,7 @@ public class DatabaseTest {
         retorno4 = databaseDAO.retornaCpfUsers().get(1);
         userDAO.remove(mockUser1);
         userDAO.remove(mockUser2);
+
 
         //then
         assertEquals(esperado1,retorno1);

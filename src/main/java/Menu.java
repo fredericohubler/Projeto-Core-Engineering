@@ -137,8 +137,8 @@ public class Menu {
         }
         while (true){
             System.out.println("Para confirmar a exclusão do usuario "+deletado.getNome()+", digite o nome do usuario a ser deletado:");
-            in=sc.next();
-            if(in.equals(deletado.getNome())){
+            in=sc.nextLine();
+            if(in.equalsIgnoreCase(deletado.getNome())){
                 userDAO.remove(deletado);
                 System.out.println("Usuario "+deletado.getNome()+" excluido com sucesso.");
                 menuInicial();
