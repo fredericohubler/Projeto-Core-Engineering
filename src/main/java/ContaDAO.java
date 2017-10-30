@@ -24,7 +24,7 @@ public class ContaDAO {
         }
     }
 
-    public boolean remove(Conta conta) {
+    public boolean remove(Conta conta, String UserCPF) {
         String insert="DELETE FROM Conta WHERE NumeroConta = ?";
         try{
             PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
