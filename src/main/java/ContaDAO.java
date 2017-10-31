@@ -24,7 +24,7 @@ public class ContaDAO {
         }
     }
 
-    public boolean remove(Conta conta, String UserCPF) {
+    public boolean remove(Conta conta) {
         String insert="DELETE FROM Conta WHERE NumeroConta = ?";
         try{
             PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
@@ -33,6 +33,44 @@ public class ContaDAO {
             prep.close();
             return true;
         } catch (SQLException u){
+            System.out.println(u);
+            throw new RuntimeException(u);
+        }
+    }
+
+    public double retornaSaldo(Conta conta){
+        String insert = "SELECT Conta.Saldo FROM Conta WHERE NumeroConta = ?";
+        try{
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
+            prep.setString(1,conta.getNumeroConta());
+            ResultSet st = prep.executeQuery();
+            st.next();
+            return st.getDouble("Saldo");
+        }catch (SQLException u){
+            System.out.println(u);
+            throw new RuntimeException(u);
+        }
+    }
+
+    public void adicionaSaldo(Conta conta, double quantia){
+        String insert = "UPDATE Conta SET Saldo = ? WHERE NumeroConta = ?";
+        try{
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
+            prep.setDouble(1,(retornaSaldo(conta)+quantia));
+            prep.setString(2,conta.getNumeroConta());
+        }catch (SQLException u){
+            System.out.println(u);
+            throw new RuntimeException(u);
+        }
+    }
+
+    public void diminuiSaldo(Conta conta, double quantia){
+        String insert = "UPDATE Conta SET Saldo = ? WHERE NumeroConta = ?";
+        try{
+            PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
+            prep.setDouble(1,(retornaSaldo(conta)-quantia));
+            prep.setString(2,conta.getNumeroConta());
+        }catch (SQLException u){
             System.out.println(u);
             throw new RuntimeException(u);
         }
