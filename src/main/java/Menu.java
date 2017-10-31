@@ -159,19 +159,21 @@ public class Menu {
         System.out.println("2 - Adicionar Conta");
         System.out.println("3 - Remover Conta");
         System.out.println("4 - Registrar gasto ou ganho");
+        System.out.println("0 - Retornar ao menu inicial.");
         String in = sc.nextLine();
-        while (!(in.equals("1") || in.equals("2") || in.equals("3") || in.equals("4"))){
+        while (!(in.equals("1") || in.equals("2") || in.equals("3") || in.equals("4") || in.equals("0"))){
             System.out.println("Opção invalida.");
             System.out.println("Selecione a opção desejada:");
             System.out.println("1 - Mostrar resumo");
             System.out.println("2 - Adicionar Conta");
             System.out.println("3 - Remover Conta");
             System.out.println("4 - Registrar gasto ou ganho");
+            System.out.println("0 - Retornar ao menu inicial.");
             in=sc.nextLine();
         }
         switch (Integer.parseInt(in)){
-            /*case 1: printaResumo();
-                    return;*/
+            case 1: printaResumo(usuarioSelecionado);
+                    return;
 
             case 2: criarConta(usuarioSelecionado);
                     return;
@@ -181,6 +183,9 @@ public class Menu {
 
             /*case 4: registrarMovimento();
                     return;*/
+
+            case 0: menuInicial();
+                    return;
         }
     }
 
@@ -312,5 +317,19 @@ public class Menu {
                 return;
             }
         }
+    }
+
+    public void printaResumo(User usuarioSelecionado) {
+        DatabaseDAO databaseDAO = new DatabaseDAO();
+        Conta contaMock = null;
+        double saldoTotal =0;
+        ArrayList<String> numeroContasDoUsuario = databaseDAO.retornaNumeroContaUsuarioEspecifico(usuarioSelecionado.getCPF());
+        for (int i = 0; i <numeroContasDoUsuario.size() ; i++) {
+            contaMock = databaseDAO.retornaObjetoConta(numeroContasDoUsuario.get(i));
+            saldoTotal+=contaMock.getSaldo();
+            System.out.println("Nome da conta: " +contaMock.getNome()+"   Numero da conta: "+contaMock.getNumeroConta()+"   Saldo: R$"+contaMock.getSaldo());
+        }
+        System.out.println("Saldo total: R$"+saldoTotal);
+        menuResumo(usuarioSelecionado);
     }
 }

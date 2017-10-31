@@ -38,7 +38,7 @@ public class DatabaseDAO {
         return retorno;
     }
 
-    public ArrayList<String> retornaNumeroConta(){
+    public ArrayList<String> retornaNumeroContas(){
         String sql = "SELECT Conta.NumeroConta FROM Conta";
         ArrayList<String> retorno= new ArrayList<>();
         try{
