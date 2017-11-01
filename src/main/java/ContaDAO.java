@@ -56,8 +56,10 @@ public class ContaDAO {
         String insert = "UPDATE Conta SET Saldo = ? WHERE NumeroConta = ?";
         try{
             PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
-            prep.setDouble(1,(retornaSaldo(conta)+quantia));
+            double adicionar = retornaSaldo(conta) + quantia;
+            prep.setDouble(1,adicionar);
             prep.setString(2,conta.getNumeroConta());
+            prep.execute();
         }catch (SQLException u){
             System.out.println(u);
             throw new RuntimeException(u);
@@ -70,6 +72,7 @@ public class ContaDAO {
             PreparedStatement prep = Database.getConexaoMySQL().prepareStatement(insert);
             prep.setDouble(1,(retornaSaldo(conta)-quantia));
             prep.setString(2,conta.getNumeroConta());
+            prep.execute();
         }catch (SQLException u){
             System.out.println(u);
             throw new RuntimeException(u);
