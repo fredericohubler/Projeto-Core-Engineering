@@ -1,3 +1,7 @@
+import dao.DatabaseDAO;
+import dao.UserDAO;
+import model.Database;
+import model.User;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -32,14 +36,28 @@ public class DatabaseTest {
         User mockUser2 = new User("Teste2","22222222221" );
         userDAO.insere(mockUser1);
         userDAO.insere(mockUser2);
-        String sql = "SELECT User.Nome FROM User";
+        String sql = "SELECT model.User.Nome FROM model.User";
 
-        String retorno1,retorno2;
-        String retorno3,retorno4;
-        retorno1 = databaseDAO.retornaNomeUsers().get(0);
-        retorno2 = databaseDAO.retornaNomeUsers().get(1);
-        retorno3 = databaseDAO.retornaCpfUsers().get(0);
-        retorno4 = databaseDAO.retornaCpfUsers().get(1);
+        String retorno1 = null;
+        String retorno2 = null;
+        String retorno3 = null;
+        String retorno4 = null;
+        for (int i = 0; i <databaseDAO.retornaNomeUsers().size() ; i++) {
+            if(databaseDAO.retornaNomeUsers().get(i).equals("Teste1")){
+                retorno1 = databaseDAO.retornaNomeUsers().get(i);
+            }
+            if(databaseDAO.retornaNomeUsers().get(i).equals("Teste2")){
+                retorno2 = databaseDAO.retornaNomeUsers().get(i);
+            }
+
+            if(databaseDAO.retornaCpfUsers().get(i).equals("11111111112")){
+                retorno3 = databaseDAO.retornaCpfUsers().get(i);
+            }
+
+            if(databaseDAO.retornaCpfUsers().get(i).equals("22222222221")){
+                retorno4 = databaseDAO.retornaCpfUsers().get(i);
+            }
+        }
         userDAO.remove(mockUser1);
         userDAO.remove(mockUser2);
 

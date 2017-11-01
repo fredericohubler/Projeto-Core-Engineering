@@ -1,3 +1,7 @@
+import dao.UserDAO;
+import model.Conta;
+import model.ContaDAO;
+import model.User;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

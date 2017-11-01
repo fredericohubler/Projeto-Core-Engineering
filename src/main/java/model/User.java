@@ -1,6 +1,6 @@
+package model;
+
 import java.util.ArrayList;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Connection;
 public class User {
     private ArrayList<Conta> contas;
@@ -20,7 +20,7 @@ public class User {
     }
 
     /*public void adicionaConta(String agencia, int numConta, double saldo, double mensalidade, String nome, String diaMensalidade){
-        Conta nova = new Conta(agencia, numConta, saldo, mensalidade, nome, diaMensalidade);
+        model.Conta nova = new model.Conta(agencia, numConta, saldo, mensalidade, nome, diaMensalidade);
         contas.add(nova);
     }*/
 
@@ -36,7 +36,7 @@ public class User {
     }
 
    /* public boolean insere() {
-        String insert="INSERT INTO User(Nome, CPF) VALUES (?, ?)";
+        String insert="INSERT INTO model.User(Nome, CPF) VALUES (?, ?)";
         try{
             PreparedStatement prep = connection.prepareStatement(insert);
             prep.setString(1,getNome());
@@ -51,7 +51,7 @@ public class User {
     }
 
     public boolean remove() {
-        String insert="DELETE FROM User WHERE CPF = ?";
+        String insert="DELETE FROM model.User WHERE CPF = ?";
         try{
             PreparedStatement prep = connection.prepareStatement(insert);
             prep.setString(1,getCPF());

@@ -1,3 +1,11 @@
+package viewcontroller;
+
+import dao.DatabaseDAO;
+import dao.UserDAO;
+import model.Conta;
+import model.ContaDAO;
+import model.User;
+
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -157,8 +165,8 @@ public class Menu {
         DatabaseDAO dbdao = new DatabaseDAO();
         System.out.println("Bem vindo " + usuarioSelecionado.getNome() + ", por favor selecione uma opção:");
         System.out.println("1 - Mostrar resumo");
-        System.out.println("2 - Adicionar Conta");
-        System.out.println("3 - Remover Conta");
+        System.out.println("2 - Adicionar model.Conta");
+        System.out.println("3 - Remover model.Conta");
         System.out.println("4 - Registrar gasto ou ganho");
         System.out.println("0 - Retornar ao menu inicial.");
         String in = sc.nextLine();
@@ -166,8 +174,8 @@ public class Menu {
             System.out.println("Opção invalida.");
             System.out.println("Selecione a opção desejada:");
             System.out.println("1 - Mostrar resumo");
-            System.out.println("2 - Adicionar Conta");
-            System.out.println("3 - Remover Conta");
+            System.out.println("2 - Adicionar model.Conta");
+            System.out.println("3 - Remover model.Conta");
             System.out.println("4 - Registrar gasto ou ganho");
             System.out.println("0 - Retornar ao menu inicial.");
             in = sc.nextLine();
@@ -291,7 +299,7 @@ public class Menu {
 
         System.out.println("Selecione qual conta será deletada:");
         for (i = 0; i < numeroContas.size(); i++) {
-            System.out.println((i + 1) + " - Numero da Conta: " + numeroContas.get(i));
+            System.out.println((i + 1) + " - Numero da model.Conta: " + numeroContas.get(i));
         }
         String in = sc.nextLine();
         while (true) {
@@ -312,7 +320,7 @@ public class Menu {
             in = sc.nextLine();
             if (in.equalsIgnoreCase(deletado.getNumeroConta())) {
                 contaDAO.remove(deletado);
-                System.out.println("Conta de numero " + deletado.getNumeroConta() + " excluida com sucesso.");
+                System.out.println("model.Conta de numero " + deletado.getNumeroConta() + " excluida com sucesso.");
                 menuResumo(usuarioSelecionado);
                 return;
             } else {
@@ -386,7 +394,7 @@ public class Menu {
         ArrayList<String> numeroContas = databaseDAO.retornaNumeroContaUsuarioEspecifico(usuarioSelecionado.getCPF());
         System.out.println("Selecione qual conta deseja utilizar: ");
         for (i = 0; i < numeroContas.size(); i++) {
-            System.out.println((i + 1) + " - Numero da Conta: " + numeroContas.get(i));
+            System.out.println((i + 1) + " - Numero da model.Conta: " + numeroContas.get(i));
         }
         String in = sc.nextLine();
         while (true) {
